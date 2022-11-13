@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import DataEntryForm from './DataEntryForm';
+import { useState } from 'react';
+import FormOutput from './FormOutput';
 
 function App() {
+  const [output, setOutput] = useState('')
+
+  const updateOutput = (output) => {
+    setOutput(() => {
+      return { ...output }
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <DataEntryForm updateOutput={updateOutput} />
+      <FormOutput data={output} />
+    </>
   );
 }
 
